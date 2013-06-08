@@ -10,5 +10,8 @@ addSbtPlugin("play" % "sbt-plugin" % "2.1.1")
 // QA tools (PMD, Checkstyle)
 libraryDependencies ++= Seq(
   "com.puppycrawl.tools" % "checkstyle" % "5.5",
-  "net.sourceforge.pmd" % "pmd" % "5.0.0"
+  "net.sourceforge.pmd" % "pmd" % "5.0.0",
+  "com.google.code.findbugs" % "findbugs" % "2.0.1"
 )
+
+

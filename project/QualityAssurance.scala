@@ -6,7 +6,8 @@ object QualityAssurance {
 
   def all: Seq[sbt.Project.Setting[_]] = List(
     CheckStyleSettings.all,
-    PmdSettings.all
+    PmdSettings.all,
+    FindbugsSettings.all
   ).flatten
 
   object CheckStyleSettings {
@@ -65,6 +66,35 @@ object QualityAssurance {
       }
 
     val all = Seq(pmdTask)
+  }
+  
+  object FindbugsSettings {
+
+    val findbugs = TaskKey[Unit]("findbugs", "run FindBugs")
+    val findbugsTask = findbugs <<=
+      (streams, baseDirectory, sourceDirectory in Compile, target) map {
+        (streams, base, src, target) =>
+        import edu.umd.cs.findbugs.FindBugs2.{ main => FindbugsMain }
+        import streams.log
+        val outputFile = (target / "findbugs-report.txt").getAbsolutePath
+
+        val args = List(
+            "-textui",
+            "-sourcepath", "app",
+            "-output", outputFile,
+            "target/scala-2.10/classes"
+        )
+        log info ("Running FindBugs...")
+        trappingExits {
+          FindbugsMain(args.toArray)
+        }
+        // Print out results.
+        val source = scala.io.Source.fromFile(outputFile)
+        log info (source.mkString)
+        source.close()
+      }
+
+    val all = Seq(findbugsTask)
   }
 
   def trappingExits(thunk: => Unit): Unit = {
