@@ -6,7 +6,6 @@ object QualityAssurance {
 
   def all: Seq[sbt.Project.Setting[_]] = List(
     CheckStyleSettings.all,
-    PmdSettings.all,
     FindbugsSettings.all
   ).flatten
 
@@ -39,35 +38,7 @@ object QualityAssurance {
     val all = Seq(checkStyleTask)
   }
 
-  object PmdSettings {
 
-    val pmd = TaskKey[Unit]("pmd", "run PMD")
-    val pmdTask = pmd <<=
-      (streams, baseDirectory, sourceDirectory in Compile, target) map {
-        (streams, base, src, target) =>
-        import net.sourceforge.pmd.PMD.{ main => PmdMain }
-        import streams.log
-        val outputFile = (target / "pmd-report.txt").getAbsolutePath
-
-        val args = List(
-            src.getAbsolutePath,
-            "text",
-            (base / "project" / "pmd-ruleset.xml").getAbsolutePath,
-            "-reportfile", outputFile
-        )
-        log info ("Running PMD...")
-        trappingExits {
-          PmdMain(args.toArray)
-        }
-        // Print out results.
-        val source = scala.io.Source.fromFile(outputFile)
-        log info (source.mkString)
-        source.close()
-      }
-
-    val all = Seq(pmdTask)
-  }
-  
   object FindbugsSettings {
 
     val findbugs = TaskKey[Unit]("findbugs", "run FindBugs")
