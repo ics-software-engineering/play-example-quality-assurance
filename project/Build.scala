@@ -1,6 +1,7 @@
 import sbt._
 import Keys._
 import play.Project._
+import de.johoop.findbugs4sbt.FindBugs._
 
 object ApplicationBuild extends Build {
   
@@ -15,12 +16,18 @@ object ApplicationBuild extends Build {
     javaEbean
   )
 
-  val main = play.Project(appName, appVersion, appDependencies).settings(
-    // Add your own project settings here  
+  val main = play.Project(appName, appVersion, appDependencies,
+                          settings = Defaults.defaultSettings ++ findbugsSettings).settings(
+    // Add 'pmd' command to Play console.
     PmdSettings.pmdTask,
+    // Add 'checkstyle' command to Play console.
     CheckstyleSettings.checkstyleTask,
-    ApiDocSettings.apiDocTask
-    //QualityAssurance.all: _*
+    // Add 'api-doc' command (JavaDoc + ScalaDoc) to Play console.
+    ApiDocSettings.apiDocTask,
+    // Configure the 'findbugs' command within Play console.
+    //findbugsExcludeFilters := Some(scala.xml.XML.loadFile("project/findbugs-excludefilter.xml")),
+    findbugsReportType := de.johoop.findbugs4sbt.ReportType.PlainHtml,
+    findbugsTargetPath := file("target/findbugs")
   )
 
 }
