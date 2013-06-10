@@ -12,12 +12,30 @@ This project illustrates how to integrate the following quality assurance tools 
 Installation
 ------------
 
-Adding these tools to your Play project involves changes only to the [project/](https://github.com/ics-software-engineering/play-example-quality-assurance/tree/master/project) directory:
+Adding these tools to your Play project requires changes to the [project/](https://github.com/ics-software-engineering/play-example-quality-assurance/tree/master/project) directory:
 
   * Update [plugins.sbt](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/plugins.sbt) to add libraries.
   * Update [Build.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/Build.scala) to add commands to the play console.
   * Add command definition files: [ApiDocSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/ApiDocSettings.scala), [CheckstyleSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/CheckstyleSettings.scala), and [PmdSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/PmdSettings.scala).
   * Add (and maybe modify) configuration files: [checkstyle-config.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/checkstyle-config.xml) and [pmd-ruleset.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/pmd-ruleset.xml).
+
+Example invocation
+------------------
+
+PMD
++++
+
+```
+[~/projecthosting/github/play-example-quality-assurance]-> play pmd
+[info] Loading project definition from /Users/johnson/projecthosting/github/play-example-quality-assurance/project
+[info] Set current project to play-example-quality-assurance (in build file:/Users/johnson/projecthosting/github/play-example-quality-assurance/)
+[info] Running PMD...
+[info] 
+[success] Total time: 1 s, completed Jun 10, 2013 1:33:54 PM
+```
+
+The output file is in target/pmd/pmd-report.txt.  In the example, no PMD warnings are generated.
+
 
 
 Credits
@@ -27,5 +45,10 @@ Credits
   * Findbugs integration thanks to Joachim Hofer: https://bitbucket.org/jmhofer/findbugs4sbt/wiki/Home
   * Jacoco integration thanks to Joachim Hofer: https://bitbucket.org/jmhofer/jacoco4sbt
   * JavaDoc/ScalaDoc integration thanks to Yvonnick Esnault: https://github.com/yesnault/Play20StartApp/
+  
+Play version
+------------
+
+Last tested on Play 2.1.1
 
 
