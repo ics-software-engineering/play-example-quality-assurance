@@ -80,6 +80,71 @@ The output file is in target/findbugs/findbugs.xml.  For Play's default applicat
 Modify [findbugs-excludefilter.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/findbugs-excludefilter.xml) to change the way findbugs processes your code. 
 Additional FindBugs configuration options can be provided in [Build.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/Build.scala).
 
+Jacoco
+------
+
+```
+[~/projecthosting/github/play-example-quality-assurance]-> play jacoco:cover
+[info] Loading project definition from /Users/johnson/projecthosting/github/play-example-quality-assurance/project
+[info] Set current project to play-example-quality-assurance (in build file:/Users/johnson/projecthosting/github/play-example-quality-assurance/)
+[info] ApplicationTest
+[info] + ApplicationTest.simpleCheck
+[info] + ApplicationTest.renderTemplate
+[info] 
+[info] 
+[info] Total for test ApplicationTest
+[info] Finished in 0.239 seconds
+[info] 2 tests, 0 failures, 0 errors
+[info] IntegrationTest
+[info] + IntegrationTest.test
+[info] 
+[info] 
+[info] Total for test IntegrationTest
+[info] Finished in 2.875 seconds
+[info] 1 tests, 0 failures, 0 errors
+[info] Passed: : Total 3, Failed 0, Errors 0, Passed 3, Skipped 0
+[success] Total time: 4 s, completed Jun 10, 2013 1:51:29 PM
+```
+
+The output report is available in target/jacoco/html/index.html.  For Play's default application, statement coverage is 57%.
+
+Jacoco configuration options can be provided in [Build.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/Build.scala).
+
+JavaDoc and ScalaDoc
+--------------------
+
+```
+[~/projecthosting/github/play-example-quality-assurance]-> play api-doc
+[info] Loading project definition from /Users/johnson/projecthosting/github/play-example-quality-assurance/project
+[info] Set current project to play-example-quality-assurance (in build file:/Users/johnson/projecthosting/github/play-example-quality-assurance/)
+[info] No sources available, skipping Scala API documentation...
+[info] Creating destination directory: "target/doc/api/java/"
+[info] Loading source files for package controllers...
+[info] Constructing Javadoc information...
+[info] Standard Doclet version 1.7.0_10
+[info] Building tree for all the packages and classes...
+[info] Generating target/doc/api/java/controllers/Application.html...
+[info] Generating target/doc/api/java/controllers/package-frame.html...
+[info] Generating target/doc/api/java/controllers/package-summary.html...
+[info] Generating target/doc/api/java/controllers/package-tree.html...
+[info] Generating target/doc/api/java/constant-values.html...
+[info] Building index for all the packages and classes...
+[info] Generating target/doc/api/java/overview-tree.html...
+[info] Generating target/doc/api/java/index-all.html...
+[info] Generating target/doc/api/java/deprecated-list.html...
+[info] Building index for all classes...
+[info] Generating target/doc/api/java/allclasses-frame.html...
+[info] Generating target/doc/api/java/allclasses-noframe.html...
+[info] Generating target/doc/api/java/index.html...
+[info] Generating target/doc/api/java/help-doc.html...
+API documentation in target/doc/api
+[success] Total time: 2 s, completed Jun 10, 2013 1:55:36 PM
+```
+
+The API documentation can be found in target/doc/api.
+
+To modify the output, edit [ApiDocSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/ApiDocSettings.scala).
+
 Credits
 =======
 
