@@ -1,8 +1,5 @@
-Play-Example-Quality-Assurance
-------------------------------
-
 Overview
-========
+--------
 
 This project illustrates how to integrate the following quality assurance tools with [Play](http://www.playframework.com/) applications:
 
