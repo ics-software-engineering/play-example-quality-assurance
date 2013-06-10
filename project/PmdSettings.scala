@@ -18,6 +18,7 @@ object PmdSettings {
           src.getAbsolutePath,
           "text",
           (base / "project" / "pmd-ruleset.xml").getAbsolutePath,
+          //"java-basic",
           "-reportfile", outputFile
       )
 
