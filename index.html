@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Play-Example-Quality-Assurance : Automated quality assurance tool integration (checkstyle, pmd, jacoco, findbugs, javadoc/scaladoc) for the Play Framework" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Play-Example-Quality-Assurance</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/ics-software-engineering/play-example-quality-assurance">View on GitHub</a>
+
+          <h1 id="project_title">Play-Example-Quality-Assurance</h1>
+          <h2 id="project_tagline">Automated quality assurance tool integration (checkstyle, pmd, jacoco, findbugs, javadoc/scaladoc) for the Play Framework</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/ics-software-engineering/play-example-quality-assurance/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/ics-software-engineering/play-example-quality-assurance/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h1>
+
+<p>This project illustrates how to integrate the following quality assurance tools with <a href="http://www.playframework.com/">Play</a> applications:</p>
+
+<ul>
+<li>
+<a href="http://pmd.sourceforge.net/">PMD</a> source code analysis</li>
+<li>
+<a href="http://checkstyle.sourceforge.net/">Checkstyle</a> source code analysis</li>
+<li>
+<a href="http://findbugs.sourceforge.net/">FindBugs</a> byte code analysis</li>
+<li>
+<a href="http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html">JavaDoc</a> and <a href="http://docs.scala-lang.org/style/scaladoc.html">ScalaDoc</a> documentation generation</li>
+<li>
+<a href="http://www.eclemma.org/jacoco/">Jacoco</a> test coverage analysis</li>
+</ul><h1>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<p>Adding these tools to your Play project requires changes to the <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/tree/master/project">project/</a> directory:</p>
+
+<ul>
+<li>Update <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/plugins.sbt">plugins.sbt</a> to add libraries.</li>
+<li>Update <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/Build.scala">Build.scala</a> to add commands to the play console.</li>
+<li>Add command definition files: <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/ApiDocSettings.scala">ApiDocSettings.scala</a>, <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/CheckstyleSettings.scala">CheckstyleSettings.scala</a>, and <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/PmdSettings.scala">PmdSettings.scala</a>.</li>
+<li>Add (and maybe modify) configuration files: <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/checkstyle-config.xml">checkstyle-config.xml</a>, <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/pmd-ruleset.xml">pmd-ruleset.xml</a>, and <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/findbugs-excludefilter.xml">findbugs-excludefilter.xml</a>.</li>
+</ul><h1>
+<a name="example-invocations" class="anchor" href="#example-invocations"><span class="octicon octicon-link"></span></a>Example invocations</h1>
+
+<h2>
+<a name="pmd" class="anchor" href="#pmd"><span class="octicon octicon-link"></span></a>PMD</h2>
+
+<pre><code>[~/projecthosting/github/play-example-quality-assurance]-&gt; play pmd
+[info] Loading project definition from /Users/johnson/projecthosting/github/play-example-quality-assurance/project
+[info] Set current project to play-example-quality-assurance (in build file:/Users/johnson/projecthosting/github/play-example-quality-assurance/)
+[info] Running PMD...
+[info] 
+[success] Total time: 1 s, completed Jun 10, 2013 1:33:54 PM
+</code></pre>
+
+<p>The output file is in target/pmd/pmd-report.txt and echoed to the console.  For Play's default application, no PMD warnings are generated, resulting in a blank info line output.</p>
+
+<p>Modify <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/pmd-ruleset.xml">pmd-ruleset.xml</a> to change the way PMD analyzes your code. </p>
+
+<h2>
+<a name="checkstyle" class="anchor" href="#checkstyle"><span class="octicon octicon-link"></span></a>Checkstyle</h2>
+
+<pre><code>[~/projecthosting/github/play-example-quality-assurance]-&gt; play checkstyle
+[info] Loading project definition from /Users/johnson/projecthosting/github/play-example-quality-assurance/project
+[info] Set current project to play-example-quality-assurance (in build file:/Users/johnson/projecthosting/github/play-example-quality-assurance/)
+[info] Running checkstyle...
+[info] Starting audit...
+[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:0: Missing package-info.java file.
+[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:3: Using the '.*' form of import should be avoided - play.*.
+[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:4: Using the '.*' form of import should be avoided - play.mvc.*.
+[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:6: Using the '.*' form of import should be avoided - views.html.*.
+[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:8: Missing a Javadoc comment.
+[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:9: Line has trailing spaces.
+[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:10:5: Missing a Javadoc comment.
+[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:13: Line has trailing spaces.
+[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/views/index.scala.html:4: Line has trailing spaces.
+[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/views/index.scala.html:6: Line has trailing spaces.
+[info] Audit done.
+[success] Total time: 1 s, completed Jun 10, 2013 1:39:55 PM
+</code></pre>
+
+<p>The output file is in target/checkstyle/checkstyle-report.txt and also echoed to the console. For Play's default application, 10 Checkstyle warnings are generated.</p>
+
+<p>Modify <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/checkstyle-config.xml">checkstyle-config.xml</a> to change the way Checkstyle analyzes your code.</p>
+
+<h2>
+<a name="findbugs" class="anchor" href="#findbugs"><span class="octicon octicon-link"></span></a>FindBugs</h2>
+
+<pre><code>[~/projecthosting/github/play-example-quality-assurance]-&gt; play findbugs
+[info] Loading project definition from /Users/johnson/projecthosting/github/play-example-quality-assurance/project
+[info] Set current project to play-example-quality-assurance (in build file:/Users/johnson/projecthosting/github/play-example-quality-assurance/)
+[success] Total time: 7 s, completed Jun 10, 2013 1:45:10 PM
+</code></pre>
+
+<p>The output file is in target/findbugs/findbugs.xml.  For Play's default application, no FindBug errors are generated, but the plugin will output the number of warnings found if non-zero.</p>
+
+<p>Modify <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/findbugs-excludefilter.xml">findbugs-excludefilter.xml</a> to change the way findbugs processes your code. 
+Additional FindBugs configuration options can be provided in <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/Build.scala">Build.scala</a>.</p>
+
+<h2>
+<a name="jacoco" class="anchor" href="#jacoco"><span class="octicon octicon-link"></span></a>Jacoco</h2>
+
+<pre><code>[~/projecthosting/github/play-example-quality-assurance]-&gt; play jacoco:cover
+[info] Loading project definition from /Users/johnson/projecthosting/github/play-example-quality-assurance/project
+[info] Set current project to play-example-quality-assurance (in build file:/Users/johnson/projecthosting/github/play-example-quality-assurance/)
+[info] ApplicationTest
+[info] + ApplicationTest.simpleCheck
+[info] + ApplicationTest.renderTemplate
+[info] 
+[info] 
+[info] Total for test ApplicationTest
+[info] Finished in 0.239 seconds
+[info] 2 tests, 0 failures, 0 errors
+[info] IntegrationTest
+[info] + IntegrationTest.test
+[info] 
+[info] 
+[info] Total for test IntegrationTest
+[info] Finished in 2.875 seconds
+[info] 1 tests, 0 failures, 0 errors
+[info] Passed: : Total 3, Failed 0, Errors 0, Passed 3, Skipped 0
+[success] Total time: 4 s, completed Jun 10, 2013 1:51:29 PM
+</code></pre>
+
+<p>The output report is available in target/jacoco/html/index.html.  For Play's default application, statement coverage is 57%.</p>
+
+<p>Jacoco configuration options can be provided in <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/Build.scala">Build.scala</a>.</p>
+
+<h2>
+<a name="javadoc-and-scaladoc" class="anchor" href="#javadoc-and-scaladoc"><span class="octicon octicon-link"></span></a>JavaDoc and ScalaDoc</h2>
+
+<pre><code>[~/projecthosting/github/play-example-quality-assurance]-&gt; play api-doc
+[info] Loading project definition from /Users/johnson/projecthosting/github/play-example-quality-assurance/project
+[info] Set current project to play-example-quality-assurance (in build file:/Users/johnson/projecthosting/github/play-example-quality-assurance/)
+[info] No sources available, skipping Scala API documentation...
+[info] Creating destination directory: "target/doc/api/java/"
+[info] Loading source files for package controllers...
+[info] Constructing Javadoc information...
+[info] Standard Doclet version 1.7.0_10
+[info] Building tree for all the packages and classes...
+[info] Generating target/doc/api/java/controllers/Application.html...
+[info] Generating target/doc/api/java/controllers/package-frame.html...
+[info] Generating target/doc/api/java/controllers/package-summary.html...
+[info] Generating target/doc/api/java/controllers/package-tree.html...
+[info] Generating target/doc/api/java/constant-values.html...
+[info] Building index for all the packages and classes...
+[info] Generating target/doc/api/java/overview-tree.html...
+[info] Generating target/doc/api/java/index-all.html...
+[info] Generating target/doc/api/java/deprecated-list.html...
+[info] Building index for all classes...
+[info] Generating target/doc/api/java/allclasses-frame.html...
+[info] Generating target/doc/api/java/allclasses-noframe.html...
+[info] Generating target/doc/api/java/index.html...
+[info] Generating target/doc/api/java/help-doc.html...
+API documentation in target/doc/api
+[success] Total time: 2 s, completed Jun 10, 2013 1:55:36 PM
+</code></pre>
+
+<p>The API documentation can be found in target/doc/api.</p>
+
+<p>To modify the output, edit <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/ApiDocSettings.scala">ApiDocSettings.scala</a>.</p>
+
+<h1>
+<a name="credits" class="anchor" href="#credits"><span class="octicon octicon-link"></span></a>Credits</h1>
+
+<ul>
+<li>Checkstyle and PMD integration thanks to Yuvi Masory: <a href="https://github.com/ymasory/sbt-code-quality.g8">https://github.com/ymasory/sbt-code-quality.g8</a>
+</li>
+<li>Findbugs integration thanks to Joachim Hofer: <a href="https://bitbucket.org/jmhofer/findbugs4sbt/wiki/Home">https://bitbucket.org/jmhofer/findbugs4sbt/wiki/Home</a>
+</li>
+<li>Jacoco integration thanks to Joachim Hofer: <a href="https://bitbucket.org/jmhofer/jacoco4sbt">https://bitbucket.org/jmhofer/jacoco4sbt</a>
+</li>
+<li>JavaDoc/ScalaDoc integration thanks to Yvonnick Esnault: <a href="https://github.com/yesnault/Play20StartApp/">https://github.com/yesnault/Play20StartApp/</a>
+</li>
+</ul><h2>
+<a name="play-version" class="anchor" href="#play-version"><span class="octicon octicon-link"></span></a>Play version</h2>
+
+<p>Last tested on Play 2.1.1</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Play-Example-Quality-Assurance maintained by <a href="https://github.com/ics-software-engineering">ics-software-engineering</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
