@@ -1,5 +1,5 @@
 Overview
---------
+========
 
 This project illustrates how to integrate the following quality assurance tools with [Play](http://www.playframework.com/) applications:
 
@@ -10,7 +10,7 @@ This project illustrates how to integrate the following quality assurance tools 
   * [Jacoco](http://www.eclemma.org/jacoco/) test coverage analysis
 
 Installation
-------------
+============
 
 Adding these tools to your Play project requires changes to the [project/](https://github.com/ics-software-engineering/play-example-quality-assurance/tree/master/project) directory:
 
@@ -19,11 +19,11 @@ Adding these tools to your Play project requires changes to the [project/](https
   * Add command definition files: [ApiDocSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/ApiDocSettings.scala), [CheckstyleSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/CheckstyleSettings.scala), and [PmdSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/PmdSettings.scala).
   * Add (and maybe modify) configuration files: [checkstyle-config.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/checkstyle-config.xml) and [pmd-ruleset.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/pmd-ruleset.xml).
 
-Example invocation
-------------------
+Example invocations
+===================
 
 PMD
-***
+---
 
 ```
 [~/projecthosting/github/play-example-quality-assurance]-> play pmd
@@ -39,7 +39,8 @@ The output file is in target/pmd/pmd-report.txt and echoed to the console.  For 
 Modify [pmd-ruleset.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/pmd-ruleset.xml) to change the way PMD analyzes your code. 
 
 Checkstyle
-**********
+----------
+
 ```
 [~/projecthosting/github/play-example-quality-assurance]-> play checkstyle
 [info] Loading project definition from /Users/johnson/projecthosting/github/play-example-quality-assurance/project
@@ -67,7 +68,7 @@ Modify [checkstyle-config.xml](https://github.com/ics-software-engineering/play-
 
 
 Credits
--------
+=======
 
   * Checkstyle and PMD integration thanks to Yuvi Masory: https://github.com/ymasory/sbt-code-quality.g8
   * Findbugs integration thanks to Joachim Hofer: https://bitbucket.org/jmhofer/findbugs4sbt/wiki/Home
