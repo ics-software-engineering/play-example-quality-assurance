@@ -18,6 +18,14 @@ Adding these tools to your Play project requires changes to the [project/](https
   * Update [Build.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/Build.scala) to add commands to the play console.
   * Add command definition files: [ApiDocSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/ApiDocSettings.scala), [CheckstyleSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/CheckstyleSettings.scala), and [PmdSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/PmdSettings.scala).
   * Add (and maybe modify) configuration files: [checkstyle-config.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/checkstyle-config.xml), [pmd-ruleset.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/pmd-ruleset.xml), and [findbugs-excludefilter.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/findbugs-excludefilter.xml).
+  
+Screencast
+==========
+
+Click the image below to watch a 14 minute walkthrough of this example:
+
+[<img src="https://raw.github.com/ics-software-engineering/play-example-quality-assurance/master/doc/play-example-quality-assurance-screenshot.png" width="400">](https://www.youtube.com/watch?v=uRknW9EjISw)  
+  
 
 Example invocations
 ===================
