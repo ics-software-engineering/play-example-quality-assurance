@@ -41,7 +41,7 @@ object ApplicationBuild extends Build {
     // Configuration file: project/findbugs-excludefilter.xml
     // Output file: target/findbugs/findbugs.xml
     findbugsExcludeFilters := Some(scala.xml.XML.loadFile("project/findbugs-excludefilter.xml")),
-    findbugsReportType := de.johoop.findbugs4sbt.ReportType.Html,
+    findbugsReportType := de.johoop.findbugs4sbt.ReportType.Xml,
     findbugsTargetPath := file("target/findbugs"),
 
     // Add the 'jacoco:cover' command to Play console. 
