@@ -40,9 +40,11 @@ object ApplicationBuild extends Build {
     // Add the 'findbugs' command to Play console.
     // Configuration file: project/findbugs-excludefilter.xml
     // Output file: target/findbugs/findbugs.xml
-    findbugsExcludeFilters := Some(scala.xml.XML.loadFile("project/findbugs-excludefilter.xml")),
+    // You want the report name file extension to match the report type. 
     findbugsReportType := de.johoop.findbugs4sbt.ReportType.Xml,
-    findbugsTargetPath := file("target/findbugs"),
+    findbugsReportName := "findbugs.xml",
+    findbugsTargetPath <<= target (_ / "findbugs"),
+    findbugsExcludeFilters <<= baseDirectory { base => Some(scala.xml.XML.loadFile(BuildPaths.projectStandard(base) / "findbugs-excludefilter.xml")) },
 
     // Add the 'jacoco:cover' command to Play console. 
     // Output file: target/jacoco/html/index.html
