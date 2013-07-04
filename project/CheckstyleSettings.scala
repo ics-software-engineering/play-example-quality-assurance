@@ -12,11 +12,11 @@ object CheckstyleSettings {
       import com.puppycrawl.tools.checkstyle.Main.{ main => CsMain }
       import streams.log
       val outputDir = (target / "checkstyle").mkdirs
-      val outputFile = (target / "checkstyle" / "checkstyle-report.txt").getAbsolutePath
+      val outputFile = (target / "checkstyle" / "checkstyle-report.xml").getAbsolutePath
 
       val args = List(
         "-c", (base / "project" / "checkstyle-config.xml").getAbsolutePath,
-        "-f", "plain",
+        "-f", "xml",
         "-r", src.getAbsolutePath,
         "-o", outputFile
       )

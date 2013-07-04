@@ -12,11 +12,11 @@ object PmdSettings {
       import net.sourceforge.pmd.PMD.{ main => PmdMain }
       import streams.log
       val outputDir = (target / "pmd").mkdirs
-      val outputFile = (target / "pmd" / "pmd-report.txt").getAbsolutePath
+      val outputFile = (target / "pmd" / "pmd-report.xml").getAbsolutePath
 
       val args = List(
           src.getAbsolutePath,
-          "text",
+          "xml",
           (base / "project" / "pmd-ruleset.xml").getAbsolutePath,
           "-reportfile", outputFile
       )
