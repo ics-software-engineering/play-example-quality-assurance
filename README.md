@@ -166,4 +166,9 @@ Play version
 
 Last tested on Play 2.1.1
 
+Build status
+------------
+  [![Build Status](https://philipmjohnson.ci.cloudbees.com/buildStatus/icon?job=play-example-quality-assurance)](https://philipmjohnson.ci.cloudbees.com/job/play-example-quality-assurance/) 
+
+
 
