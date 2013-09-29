@@ -14,7 +14,7 @@ Installation
 
 Adding these tools to your Play project requires changes to build.sbt and the [project/](https://github.com/ics-software-engineering/play-example-quality-assurance/tree/master/project) directory:
 
-  * Update [build.sbt](project/build.sbt) to add commands to the play console.
+  * Update [build.sbt](build.sbt) to add commands to the play console.
   * Update [plugins.sbt](project/plugins.sbt) to add libraries.
   * Add command definition files: [ApiDocSettings.scala](project/ApiDocSettings.scala), [CheckstyleSettings.scala](project/CheckstyleSettings.scala), and [PmdSettings.scala](project/PmdSettings.scala).
   * Add (and maybe modify) configuration files: [checkstyle-config.xml](project/checkstyle-config.xml), [pmd-ruleset.xml](project/pmd-ruleset.xml), and [findbugs-excludefilter.xml](project/findbugs-excludefilter.xml).
@@ -88,7 +88,7 @@ The output file is in target/findbugs/findbugs.xml.
 For Play's default application, no FindBug errors are generated, but the plugin will output the number of warnings found if non-zero.
 
 Modify [findbugs-excludefilter.xml](project/findbugs-excludefilter.xml) to change the way findbugs processes your code. 
-Additional FindBugs configuration options can be provided in [build.sbt](project/build.sbt).
+Additional FindBugs configuration options can be provided in [build.sbt](build.sbt).
 
 Jacoco
 ------
@@ -118,7 +118,7 @@ Jacoco
 
 The output report is available in target/jacoco/html/index.html.  For Play's default application, statement coverage is 57%.
 
-Jacoco configuration options can be provided in [build.sbt](project/build.sbt).
+Jacoco configuration options can be provided in [build.sbt](build.sbt).
 
 JavaDoc and ScalaDoc
 --------------------
