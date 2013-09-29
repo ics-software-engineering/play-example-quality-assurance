@@ -179,7 +179,7 @@ Credits
 =======
 
   * Tweaked docs and migrated to Play 2.2.0 build.sbt format, thanks to Mike Slinn: https://github.com/mslinn
-  * Checkstyle and PMD integration thanks to Yuvi Masory: https://github.com/ymasory/sbt-code-quality.g8
+  * Checkstyle and PMD integration thanks to Lily Masory: https://github.com/ymasory/sbt-code-quality.g8
   * Findbugs integration thanks to Joachim Hofer: https://bitbucket.org/jmhofer/findbugs4sbt/wiki/Home
   * Jacoco integration thanks to Joachim Hofer: https://bitbucket.org/jmhofer/jacoco4sbt
   * JavaDoc/ScalaDoc integration thanks to Yvonnick Esnault: https://github.com/yesnault/Play20StartApp/
