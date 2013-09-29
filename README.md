@@ -12,7 +12,7 @@ This project illustrates how to integrate the following quality assurance tools 
 Installation
 ============
 
-Adding these tools to your Play project requires changes to build.sbt and the [project/](https://github.com/ics-software-engineering/play-example-quality-assurance/tree/master/project) directory:
+Adding these tools to your Play project requires changes to build.sbt and the [project/](project) directory:
 
   * Update [build.sbt](build.sbt) to add commands to the play console.
   * Update [plugins.sbt](project/plugins.sbt) to add libraries.
