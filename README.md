@@ -12,12 +12,12 @@ This project illustrates how to integrate the following quality assurance tools 
 Installation
 ============
 
-Adding these tools to your Play project requires changes to the [project/](https://github.com/ics-software-engineering/play-example-quality-assurance/tree/master/project) directory:
+Adding these tools to your Play project requires adding a `qa.sbt` file and changes to the [project/](project) directory:
 
-  * Update [plugins.sbt](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/plugins.sbt) to add libraries.
-  * Update [Build.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/Build.scala) to add commands to the play console.
-  * Add command definition files: [ApiDocSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/ApiDocSettings.scala), [CheckstyleSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/CheckstyleSettings.scala), and [PmdSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/PmdSettings.scala).
-  * Add (and maybe modify) configuration files: [checkstyle-config.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/checkstyle-config.xml), [pmd-ruleset.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/pmd-ruleset.xml), and [findbugs-excludefilter.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/findbugs-excludefilter.xml).
+  * Create [qa.sbt](qa.sbt) to add commands to the play console; the contents of this file augment the contents of `build.sbt`.
+  * Update [plugins.sbt](project/plugins.sbt) to add libraries.
+  * Add command definition files: [ApiDocSettings.scala](project/ApiDocSettings.scala), [CheckstyleSettings.scala](project/CheckstyleSettings.scala), and [PmdSettings.scala](project/PmdSettings.scala).
+  * Add (and maybe modify) configuration files: [checkstyle-config.xml](project/checkstyle-config.xml), [pmd-ruleset.xml](project/pmd-ruleset.xml), and [findbugs-excludefilter.xml](project/findbugs-excludefilter.xml).
   
 Screencast
 ==========
@@ -42,9 +42,10 @@ PMD
 [success] Total time: 1 s, completed Jun 10, 2013 1:33:54 PM
 ```
 
-The output file is in target/pmd/pmd-report.txt and echoed to the console.  For Play's default application, no PMD warnings are generated, resulting in a blank info line output.
+The output file is in `target/pmd/pmd-report.txt` and echoed to the console.  
+For Play's default application, no PMD warnings are generated, resulting in a blank info line output.
 
-Modify [pmd-ruleset.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/pmd-ruleset.xml) to change the way PMD analyzes your code. 
+Modify [pmd-ruleset.xml](project/pmd-ruleset.xml) to change the way PMD analyzes your code. 
 
 Checkstyle
 ----------
@@ -69,9 +70,10 @@ Checkstyle
 [success] Total time: 1 s, completed Jun 10, 2013 1:39:55 PM
 ```
 
-The output file is in target/checkstyle/checkstyle-report.txt and also echoed to the console. For Play's default application, 10 Checkstyle warnings are generated.
+The output file is in `target/checkstyle/checkstyle-report.txt` and also echoed to the console. 
+For Play's default application, 10 Checkstyle warnings are generated.
 
-Modify [checkstyle-config.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/checkstyle-config.xml) to change the way Checkstyle analyzes your code.
+Modify [checkstyle-config.xml](project/checkstyle-config.xml) to change the way Checkstyle analyzes your code.
 
 FindBugs
 --------
@@ -83,10 +85,11 @@ FindBugs
 [success] Total time: 7 s, completed Jun 10, 2013 1:45:10 PM
 ```
 
-The output file is in target/findbugs/findbugs.xml.  For Play's default application, no FindBug errors are generated, but the plugin will output the number of warnings found if non-zero.
+The output file is in `target/findbugs/findbugs.xml`.  
+For Play's default application, no FindBug errors are generated, but the plugin will output the number of warnings found if non-zero.
 
-Modify [findbugs-excludefilter.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/findbugs-excludefilter.xml) to change the way findbugs processes your code. 
-Additional FindBugs configuration options can be provided in [Build.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/Build.scala).
+Modify [findbugs-excludefilter.xml](project/findbugs-excludefilter.xml) to change the way findbugs processes your code. 
+Additional FindBugs configuration options can be provided in [qa.sbt](qa.sbt).
 
 Jacoco
 ------
@@ -114,9 +117,10 @@ Jacoco
 [success] Total time: 4 s, completed Jun 10, 2013 1:51:29 PM
 ```
 
-The output report is available in target/jacoco/html/index.html.  For Play's default application, statement coverage is 57%.
+The output report is available in `target/jacoco/html/index.html`.  
+For Play's default application, statement coverage is 57%.
 
-Jacoco configuration options can be provided in [Build.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/Build.scala).
+Jacoco configuration options can be provided in [qa.sbt](qa.sbt).
 
 JavaDoc and ScalaDoc
 --------------------
@@ -161,7 +165,7 @@ API documentation in target/doc/api
 [success] Total time: 2 s, completed Jun 10, 2013 1:55:36 PM
 ```
 
-The API documentation can be found in target/doc/api.
+The API documentation can be found in `target/doc/api`.
 
 NOTE: With this approach, in order for test code to be documented by JavaDoc, you must locate them a package called 
 "tests" inside the top-level test/ directory. See this repo for an example.
@@ -169,12 +173,13 @@ This is a change from the "play new" command, which puts the sample tests in the
 "tests" package creates consistency with the existing Play convention of "controllers", "models", and "views"
 packages.  
 
-To modify the output, edit [ApiDocSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/ApiDocSettings.scala).
+To modify the output, edit [ApiDocSettings.scala](project/ApiDocSettings.scala).
 
 Credits
 =======
 
-  * Checkstyle and PMD integration thanks to Yuvi Masory: https://github.com/ymasory/sbt-code-quality.g8
+  * Tweaked docs and migrated to Play 2.2.0 build.sbt format, thanks to Mike Slinn: https://github.com/mslinn
+  * Checkstyle and PMD integration thanks to Lily Masory: https://github.com/ymasory/sbt-code-quality.g8
   * Findbugs integration thanks to Joachim Hofer: https://bitbucket.org/jmhofer/findbugs4sbt/wiki/Home
   * Jacoco integration thanks to Joachim Hofer: https://bitbucket.org/jmhofer/jacoco4sbt
   * JavaDoc/ScalaDoc integration thanks to Yvonnick Esnault: https://github.com/yesnault/Play20StartApp/
@@ -182,7 +187,7 @@ Credits
 Play version
 ------------
 
-Last tested on Play 2.1.1
+Last tested on Play 2.2.0
 
 Build status
 ------------

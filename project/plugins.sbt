@@ -4,8 +4,10 @@ logLevel := Level.Warn
 // The Typesafe repository
 resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
 
+resolvers += "Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
+
 // Use the Play sbt plugin for Play projects
-addSbtPlugin("play" % "sbt-plugin" % "2.1.1")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.2.0")
 
 // Add PMD, Checkstyle, and Jacoco libraries
 libraryDependencies ++= Seq(
@@ -16,9 +18,9 @@ libraryDependencies ++= Seq(
 )
 
 // Add Findbugs plugin library
-addSbtPlugin("de.johoop" % "findbugs4sbt" % "1.1.7")
+addSbtPlugin("de.johoop" % "findbugs4sbt" % "1.2.1")
 
 // Add Jacoco plugin library
-addSbtPlugin("de.johoop" % "jacoco4sbt" % "1.2.4")
+addSbtPlugin("de.johoop" % "jacoco4sbt" % "2.1.1")
 
 
