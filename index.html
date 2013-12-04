@@ -50,13 +50,13 @@
 </ul><h1>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
 
-<p>Adding these tools to your Play project requires changes to the <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/tree/master/project">project/</a> directory:</p>
+<p>Adding these tools to your Play project requires adding a <code>qa.sbt</code> file and changes to the <a href="project">project/</a> directory:</p>
 
 <ul>
-<li>Update <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/plugins.sbt">plugins.sbt</a> to add libraries.</li>
-<li>Update <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/Build.scala">Build.scala</a> to add commands to the play console.</li>
-<li>Add command definition files: <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/ApiDocSettings.scala">ApiDocSettings.scala</a>, <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/CheckstyleSettings.scala">CheckstyleSettings.scala</a>, and <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/PmdSettings.scala">PmdSettings.scala</a>.</li>
-<li>Add (and maybe modify) configuration files: <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/checkstyle-config.xml">checkstyle-config.xml</a>, <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/pmd-ruleset.xml">pmd-ruleset.xml</a>, and <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/findbugs-excludefilter.xml">findbugs-excludefilter.xml</a>.</li>
+<li>Create <a href="qa.sbt">qa.sbt</a> to add commands to the play console; the contents of this file augment the contents of <code>build.sbt</code>.</li>
+<li>Update <a href="project/plugins.sbt">plugins.sbt</a> to add libraries.</li>
+<li>Add command definition files: <a href="project/ApiDocSettings.scala">ApiDocSettings.scala</a>, <a href="project/CheckstyleSettings.scala">CheckstyleSettings.scala</a>, and <a href="project/PmdSettings.scala">PmdSettings.scala</a>.</li>
+<li>Add (and maybe modify) configuration files: <a href="project/checkstyle-config.xml">checkstyle-config.xml</a>, <a href="project/pmd-ruleset.xml">pmd-ruleset.xml</a>, and <a href="project/findbugs-excludefilter.xml">findbugs-excludefilter.xml</a>.</li>
 </ul><h1>
 <a name="screencast" class="anchor" href="#screencast"><span class="octicon octicon-link"></span></a>Screencast</h1>
 
@@ -78,9 +78,10 @@
 [success] Total time: 1 s, completed Jun 10, 2013 1:33:54 PM
 </code></pre>
 
-<p>The output file is in target/pmd/pmd-report.txt and echoed to the console.  For Play's default application, no PMD warnings are generated, resulting in a blank info line output.</p>
+<p>The output file is in <code>target/pmd/pmd-report.txt</code> and echoed to the console.<br>
+For Play's default application, no PMD warnings are generated, resulting in a blank info line output.</p>
 
-<p>Modify <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/pmd-ruleset.xml">pmd-ruleset.xml</a> to change the way PMD analyzes your code. </p>
+<p>Modify <a href="project/pmd-ruleset.xml">pmd-ruleset.xml</a> to change the way PMD analyzes your code. </p>
 
 <h2>
 <a name="checkstyle" class="anchor" href="#checkstyle"><span class="octicon octicon-link"></span></a>Checkstyle</h2>
@@ -104,9 +105,10 @@
 [success] Total time: 1 s, completed Jun 10, 2013 1:39:55 PM
 </code></pre>
 
-<p>The output file is in target/checkstyle/checkstyle-report.txt and also echoed to the console. For Play's default application, 10 Checkstyle warnings are generated.</p>
+<p>The output file is in <code>target/checkstyle/checkstyle-report.txt</code> and also echoed to the console. 
+For Play's default application, 10 Checkstyle warnings are generated.</p>
 
-<p>Modify <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/checkstyle-config.xml">checkstyle-config.xml</a> to change the way Checkstyle analyzes your code.</p>
+<p>Modify <a href="project/checkstyle-config.xml">checkstyle-config.xml</a> to change the way Checkstyle analyzes your code.</p>
 
 <h2>
 <a name="findbugs" class="anchor" href="#findbugs"><span class="octicon octicon-link"></span></a>FindBugs</h2>
@@ -117,10 +119,11 @@
 [success] Total time: 7 s, completed Jun 10, 2013 1:45:10 PM
 </code></pre>
 
-<p>The output file is in target/findbugs/findbugs.xml.  For Play's default application, no FindBug errors are generated, but the plugin will output the number of warnings found if non-zero.</p>
+<p>The output file is in <code>target/findbugs/findbugs.xml</code>.<br>
+For Play's default application, no FindBug errors are generated, but the plugin will output the number of warnings found if non-zero.</p>
 
-<p>Modify <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/findbugs-excludefilter.xml">findbugs-excludefilter.xml</a> to change the way findbugs processes your code. 
-Additional FindBugs configuration options can be provided in <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/Build.scala">Build.scala</a>.</p>
+<p>Modify <a href="project/findbugs-excludefilter.xml">findbugs-excludefilter.xml</a> to change the way findbugs processes your code. 
+Additional FindBugs configuration options can be provided in <a href="qa.sbt">qa.sbt</a>.</p>
 
 <h2>
 <a name="jacoco" class="anchor" href="#jacoco"><span class="octicon octicon-link"></span></a>Jacoco</h2>
@@ -147,9 +150,10 @@ Additional FindBugs configuration options can be provided in <a href="https://gi
 [success] Total time: 4 s, completed Jun 10, 2013 1:51:29 PM
 </code></pre>
 
-<p>The output report is available in target/jacoco/html/index.html.  For Play's default application, statement coverage is 57%.</p>
+<p>The output report is available in <code>target/jacoco/html/index.html</code>.<br>
+For Play's default application, statement coverage is 57%.</p>
 
-<p>Jacoco configuration options can be provided in <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/Build.scala">Build.scala</a>.</p>
+<p>Jacoco configuration options can be provided in <a href="qa.sbt">qa.sbt</a>.</p>
 
 <h2>
 <a name="javadoc-and-scaladoc" class="anchor" href="#javadoc-and-scaladoc"><span class="octicon octicon-link"></span></a>JavaDoc and ScalaDoc</h2>
@@ -160,14 +164,24 @@ Additional FindBugs configuration options can be provided in <a href="https://gi
 [info] No sources available, skipping Scala API documentation...
 [info] Creating destination directory: "target/doc/api/java/"
 [info] Loading source files for package controllers...
+[info] Loading source files for package tests...
 [info] Constructing Javadoc information...
 [info] Standard Doclet version 1.7.0_10
 [info] Building tree for all the packages and classes...
 [info] Generating target/doc/api/java/controllers/Application.html...
+[info] Generating target/doc/api/java/tests/ApplicationTest.html...
+[info] Generating target/doc/api/java/tests/IntegrationTest.html...
+[info] Generating target/doc/api/java/overview-frame.html...
 [info] Generating target/doc/api/java/controllers/package-frame.html...
 [info] Generating target/doc/api/java/controllers/package-summary.html...
 [info] Generating target/doc/api/java/controllers/package-tree.html...
+[info] Generating target/doc/api/java/tests/package-frame.html...
+[info] Generating target/doc/api/java/tests/package-summary.html...
+[info] Generating target/doc/api/java/tests/package-tree.html...
 [info] Generating target/doc/api/java/constant-values.html...
+[info] Generating target/doc/api/java/src-html/controllers/Application.html...
+[info] Generating target/doc/api/java/src-html/tests/IntegrationTest.html...
+[info] Generating target/doc/api/java/src-html/tests/ApplicationTest.html...
 [info] Building index for all the packages and classes...
 [info] Generating target/doc/api/java/overview-tree.html...
 [info] Generating target/doc/api/java/index-all.html...
@@ -176,20 +190,30 @@ Additional FindBugs configuration options can be provided in <a href="https://gi
 [info] Generating target/doc/api/java/allclasses-frame.html...
 [info] Generating target/doc/api/java/allclasses-noframe.html...
 [info] Generating target/doc/api/java/index.html...
+[info] Generating target/doc/api/java/overview-summary.html...
 [info] Generating target/doc/api/java/help-doc.html...
 API documentation in target/doc/api
+
 [success] Total time: 2 s, completed Jun 10, 2013 1:55:36 PM
 </code></pre>
 
-<p>The API documentation can be found in target/doc/api.</p>
+<p>The API documentation can be found in <code>target/doc/api</code>.</p>
 
-<p>To modify the output, edit <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/ApiDocSettings.scala">ApiDocSettings.scala</a>.</p>
+<p>NOTE: With this approach, in order for test code to be documented by JavaDoc, you must locate them a package called 
+"tests" inside the top-level test/ directory. See this repo for an example.
+This is a change from the "play new" command, which puts the sample tests in the default package.  Creating a
+"tests" package creates consistency with the existing Play convention of "controllers", "models", and "views"
+packages.  </p>
+
+<p>To modify the output, edit <a href="project/ApiDocSettings.scala">ApiDocSettings.scala</a>.</p>
 
 <h1>
 <a name="credits" class="anchor" href="#credits"><span class="octicon octicon-link"></span></a>Credits</h1>
 
 <ul>
-<li>Checkstyle and PMD integration thanks to Yuvi Masory: <a href="https://github.com/ymasory/sbt-code-quality.g8">https://github.com/ymasory/sbt-code-quality.g8</a>
+<li>Tweaked docs and migrated to Play 2.2.0 build.sbt format, thanks to Mike Slinn: <a href="https://github.com/mslinn">https://github.com/mslinn</a>
+</li>
+<li>Checkstyle and PMD integration thanks to Lily Masory: <a href="https://github.com/ymasory/sbt-code-quality.g8">https://github.com/ymasory/sbt-code-quality.g8</a>
 </li>
 <li>Findbugs integration thanks to Joachim Hofer: <a href="https://bitbucket.org/jmhofer/findbugs4sbt/wiki/Home">https://bitbucket.org/jmhofer/findbugs4sbt/wiki/Home</a>
 </li>
@@ -200,7 +224,12 @@ API documentation in target/doc/api
 </ul><h2>
 <a name="play-version" class="anchor" href="#play-version"><span class="octicon octicon-link"></span></a>Play version</h2>
 
-<p>Last tested on Play 2.1.1</p>
+<p>Last tested on Play 2.2.0</p>
+
+<h2>
+<a name="build-status" class="anchor" href="#build-status"><span class="octicon octicon-link"></span></a>Build status</h2>
+
+<p><a href="https://philipmjohnson.ci.cloudbees.com/job/play-example-quality-assurance/"><img src="https://philipmjohnson.ci.cloudbees.com/buildStatus/icon?job=play-example-quality-assurance" alt="Build Status"></a> </p>
       </section>
     </div>
 
