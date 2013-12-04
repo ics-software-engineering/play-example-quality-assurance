@@ -9,6 +9,10 @@ import play.mvc.*;
 import play.i18n.Lang;
 import play.libs.F;
 import play.libs.F.*;
+import static org.fest.assertions.Assertions.assertThat;
+import play.mvc.Content;
+import static play.test.Helpers.contentType;
+import static play.test.Helpers.contentAsString;
 
 
 /**

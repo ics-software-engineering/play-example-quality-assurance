@@ -21,6 +21,7 @@ libraryDependencies ++= Seq(
 addSbtPlugin("de.johoop" % "findbugs4sbt" % "1.2.1")
 
 // Add Jacoco plugin library
-addSbtPlugin("de.johoop" % "jacoco4sbt" % "2.1.1")
+addSbtPlugin("de.johoop" % "jacoco4sbt" % "2.1.2")
+//addSbtPlugin("de.johoop" % "jacoco4sbt" % "1.2.4")
 
 
