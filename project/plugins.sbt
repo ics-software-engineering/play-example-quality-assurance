@@ -13,8 +13,8 @@ addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.2.0")
 libraryDependencies ++= Seq(
   "com.puppycrawl.tools" % "checkstyle" % "5.5",
   "net.sourceforge.pmd" % "pmd" % "5.0.0",
-  "org.jacoco" % "org.jacoco.core" % "0.5.9.201207300726" artifacts(Artifact("org.jacoco.core", "jar", "jar")),
-  "org.jacoco" % "org.jacoco.report" % "0.5.9.201207300726" artifacts(Artifact("org.jacoco.report", "jar", "jar"))
+  "org.jacoco" % "org.jacoco.core" % "0.6.3.201306030806" artifacts(Artifact("org.jacoco.core", "jar", "jar")),
+  "org.jacoco" % "org.jacoco.report" % "0.6.3.201306030806" artifacts(Artifact("org.jacoco.report", "jar", "jar"))
 )
 
 // Add Findbugs plugin library
@@ -22,6 +22,7 @@ addSbtPlugin("de.johoop" % "findbugs4sbt" % "1.2.1")
 
 // Add Jacoco plugin library
 addSbtPlugin("de.johoop" % "jacoco4sbt" % "2.1.2")
-//addSbtPlugin("de.johoop" % "jacoco4sbt" % "1.2.4")
+
+
 
 
