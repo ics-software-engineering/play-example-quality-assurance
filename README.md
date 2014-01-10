@@ -37,7 +37,7 @@ Invocation
 [success] Total time: 1 s, completed Jan 10, 2014 1:05:53 PM
 ```
 
-The output file is in target/pmd/pmd-report.xml and echoed to the console.  For Play's default application, no PMD warnings are generated, resulting in a blank info line output.
+The output file is in target/pmd/pmd-report.xml and echoed to the console.  For Play's default application, no PMD warnings are generated.
 
 Checkstyle
 ==========
