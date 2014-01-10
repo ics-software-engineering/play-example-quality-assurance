@@ -116,7 +116,7 @@ Installation
   * Update [project/plugins.sbt](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/plugins.sbt) with the Jacoco sbt plugin.
   * Add [qa.jacoco.sbt](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/qa.jacoco.sbt)
   
-Note: Due to ASM library incompatibilities, you cannot install both Jacoco and PMD.  If you do, then Jacoco
+Note: Due to ASM library incompatibilities (?), you cannot install both Jacoco and PMD.  If you do, then Jacoco
 will report the following error:
     
     [error] (jacoco:fullClasspath) java.lang.IncompatibleClassChangeError: class org.jacoco.core.internal.flow.ClassProbesVisitor has interface org.objectweb.asm.ClassVisitor as super class
