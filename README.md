@@ -18,10 +18,13 @@ PMD
 Installation
 ------------
 
-  * Update project/plugins.sbt with the PMD library dependency.
-  * Add project/pmd-ruleset.xml
-  * Add project/PmdSettings.scala
-  * Add qa.pmd.sbt 
+  * Update [project/plugins.sbt](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/plugins.sbt) with the PMD library dependency.
+  * Add [project/pmd-ruleset.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/pmd-ruleset.xml)
+  * Add [project/PmdSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/PmdSettings.scala)
+  * Add [qa.pmd.sbt](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/qa.pmd.sbt)
+  
+Note that the current implementation of PMD conflicts with the current implementation of Jacoco. Only one or the other can be installed. 
+See the Jacoco documentation below for more details. 
 
 Invocation
 ---------
@@ -45,10 +48,10 @@ Checkstyle
 Installation
 ------------
 
-  * Update project/plugins.sbt with the Checkstyle library dependency.
-  * Add project/checkstyle-config.xml
-  * Add project/CheckstyleSettings.scala
-  * Add qa.checkstyle.sbt 
+  * Update [project/plugins.sbt](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/plugins.sbt) with the Checkstyle library dependency.
+  * Add [project/checkstyle-config.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/checkstyle-config.xml)
+  * Add [project/CheckstyleSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/CheckstyleSettings.scala)
+  * Add [qa.checkstyle.sbt](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/qa.checkstyle.sbt) 
 
 Invocation
 ----------
@@ -86,9 +89,9 @@ FindBugs
 Installation
 ------------
 
-  * Update project/plugins.sbt with the FindBugs sbt plugin.
-  * Add project/findbugs-exclude-filters.xml
-  * Add qa.findbugs.sbt 
+  * Update [project/plugins.sbt](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/plugins.sbt) with the FindBugs sbt plugin.
+  * Add [project/findbugs-exclude-filters.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/findbugs-exclude-filters.xml)
+  * Add [qa.findbugs.sbt](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/qa.findbugs.sbt) 
 
 Invocation
 ----------
@@ -110,8 +113,8 @@ Jacoco
 Installation
 ------------
 
-  * Update project/plugins.sbt with the Jacoco sbt plugin.
-  * Add qa.jacoco.sbt
+  * Update [project/plugins.sbt](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/plugins.sbt) with the Jacoco sbt plugin.
+  * Add [qa.jacoco.sbt](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/qa.jacoco.sbt)
   
 Note: Due to ASM library incompatibilities, you cannot install both Jacoco and PMD.  If you do, then Jacoco
 will report the following error:
@@ -154,8 +157,8 @@ JavaDoc and ScalaDoc
 Installation
 ------------
 
-  * Add project/ApiDocSettings.scala
-  * Add qa.apidoc.sbt 
+  * Add [project/ApiDocSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/ApiDocSettings.scala)
+  * Add [qa.apidoc.sbt](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/qa.apidoc.sbt) 
 
 Invocation
 ----------
