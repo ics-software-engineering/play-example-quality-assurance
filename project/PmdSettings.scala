@@ -45,7 +45,7 @@ object PmdSettings {
       thunk
     } catch {
       case _: NoExitsException =>
-      case e => throw e
+      case e : Throwable =>
     } finally {
       System setSecurityManager originalSecManager
     }

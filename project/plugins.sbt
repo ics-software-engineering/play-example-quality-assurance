@@ -5,20 +5,18 @@ logLevel := Level.Warn
 resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
 
 // Use the Play sbt plugin for Play projects
-addSbtPlugin("play" % "sbt-plugin" % "2.1.1")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.2.0")
 
 // Add PMD, Checkstyle, and Jacoco libraries
 libraryDependencies ++= Seq(
   "com.puppycrawl.tools" % "checkstyle" % "5.5",
-  "net.sourceforge.pmd" % "pmd" % "5.0.0",
-  "org.jacoco" % "org.jacoco.core" % "0.5.9.201207300726" artifacts(Artifact("org.jacoco.core", "jar", "jar")),
-  "org.jacoco" % "org.jacoco.report" % "0.5.9.201207300726" artifacts(Artifact("org.jacoco.report", "jar", "jar"))
+  "net.sourceforge.pmd" % "pmd" % "5.0.0"
 )
 
-// Add Findbugs plugin library
-addSbtPlugin("de.johoop" % "findbugs4sbt" % "1.1.7")
+// Add Jacoco plugin for code coverage
+addSbtPlugin("de.johoop" % "jacoco4sbt" % "2.1.4")
 
-// Add Jacoco plugin library
-addSbtPlugin("de.johoop" % "jacoco4sbt" % "1.2.4")
+// Add Findbugs plugin library
+addSbtPlugin("de.johoop" % "findbugs4sbt" % "1.2.1")
 
 
