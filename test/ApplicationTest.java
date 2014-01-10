@@ -2,10 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.*;
-
 import play.mvc.*;
 import play.test.*;
 import play.data.DynamicForm;
