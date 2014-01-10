@@ -111,8 +111,8 @@ Installation
   * Update project/plugins.sbt with the Jacoco sbt plugin.
   * Add qa.jacoco.sbt
   
-** Note: Due to ASM library incompatibilities, you cannot install both Jacoco and PMD.  If you do, then Jacoco
-will report the following error:**
+Note: Due to ASM library incompatibilities, you cannot install both Jacoco and PMD.  If you do, then Jacoco
+will report the following error:
     
     [error] (jacoco:fullClasspath) java.lang.IncompatibleClassChangeError: class org.jacoco.core.internal.flow.ClassProbesVisitor has interface org.objectweb.asm.ClassVisitor as super class
 
@@ -212,6 +212,7 @@ Credits
   * Findbugs integration thanks to Joachim Hofer: https://bitbucket.org/jmhofer/findbugs4sbt/wiki/Home
   * Jacoco integration thanks to Joachim Hofer: https://bitbucket.org/jmhofer/jacoco4sbt
   * JavaDoc/ScalaDoc integration thanks to Yvonnick Esnault: https://github.com/yesnault/Play20StartApp/
+  * Many tweaks thanks to Mike Slinn: https://github.com/mslinn
   
 Play version
 ============
