@@ -10,7 +10,6 @@ object ApiDocSettings {
   val apiDir = "target/doc/api"
   
   IO.delete(file(apiDir))
-  
   // Scaladoc
   var scalaVersionForSbt = Option(System.getProperty("scala.version")).getOrElse("2.10.0")
 

@@ -1,0 +1,12 @@
+<FindBugsFilter>
+  <!-- See docs/examples at http://findbugs.sourceforge.net/manual/filter.html -->
+  <Match>
+    <Class name="~views\.html\..*"/>
+  </Match>
+  <Match>
+    <Class name="~Routes.*"/>
+  </Match>
+  <Match>
+    <Class name="~controllers\.routes.*"/>
+  </Match>
+</FindBugsFilter>

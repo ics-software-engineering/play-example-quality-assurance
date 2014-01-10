@@ -2,31 +2,31 @@ import sbt._
 import Keys._
 import play.Project._
 
-// Adapted from https://github.com/ymasory/sbt-code-quality.g8
-object CheckstyleSettings {
+//Adapted from https://github.com/ymasory/sbt-code-quality.g8
+object PmdSettings {
 
-  val checkstyle = TaskKey[Unit]("checkstyle", "run checkstyle, placing results in target/checkstyle")
-  val checkstyleTask = checkstyle <<=
+  val pmd = TaskKey[Unit]("pmd", "run pmd, placing results in target/pmd")
+  val pmdTask = pmd <<=
     (streams, baseDirectory, sourceDirectory in Compile, target) map {
       (streams, base, src, target) =>
-      import com.puppycrawl.tools.checkstyle.Main.{ main => CsMain }
+      import net.sourceforge.pmd.PMD.{ main => PmdMain }
       import streams.log
-      val outputDir = (target / "checkstyle").mkdirs
-      val outputFile = (target / "checkstyle" / "checkstyle-report.xml").getAbsolutePath
-      val inputDir = src.getAbsolutePath
+      val outputDir = (target / "pmd").mkdirs
+      val outputFile = (target / "pmd" / "pmd-report.xml").getAbsolutePath
 
       val args = List(
-        "-c", (base / "project" / "checkstyle-config.xml").getAbsolutePath,
-        "-f", "xml",
-        "-r", inputDir,
-        "-o", outputFile
+          src.getAbsolutePath,
+          "xml",
+          (base / "project" / "pmd-ruleset.xml").getAbsolutePath,
+          "-reportfile", outputFile
       )
-      log info ("Running checkstyle...")
+
+      log info ("Running PMD...")
       trappingExits {
-        CsMain(args.toArray)
-        log info "got here"
+        PmdMain(args.toArray)
       }
-      // Print out results.
+      
+      // Print out results to console
       val source = scala.io.Source.fromFile(outputFile)
       log info (source.mkString)
       source.close()
