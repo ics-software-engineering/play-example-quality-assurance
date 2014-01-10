@@ -13,6 +13,6 @@ findbugsSettings
 
 findbugsReportType := Some(de.johoop.findbugs4sbt.ReportType.Xml)
 
-findbugsReportPath := Some(file("target/findbugs/findbugs.xml"))
+findbugsReportPath := Some(crossTarget.value / "findbugs" / "findbugs.xml")
 
 findbugsExcludeFilters := Some(scala.xml.XML.loadFile(baseDirectory.value / "project" / "findbugs-exclude-filters.xml"))
