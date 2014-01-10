@@ -1,52 +1,56 @@
 Overview
 ========
 
-This project illustrates how to integrate the following quality assurance tools with [Play](http://www.playframework.com/) applications:
+This system illustrates how to integrate the following quality assurance tools with [Play](http://www.playframework.com/) applications:
 
   * [PMD](http://pmd.sourceforge.net/) source code analysis
   * [Checkstyle](http://checkstyle.sourceforge.net/) source code analysis
   * [FindBugs](http://findbugs.sourceforge.net/) byte code analysis
   * [JavaDoc](http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html) and [ScalaDoc](http://docs.scala-lang.org/style/scaladoc.html) documentation generation
   * [Jacoco](http://www.eclemma.org/jacoco/) test coverage analysis
-
-Installation
-============
-
-Adding these tools to your Play project requires changes to the [project/](https://github.com/ics-software-engineering/play-example-quality-assurance/tree/master/project) directory:
-
-  * Update [plugins.sbt](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/plugins.sbt) to add libraries.
-  * Update [Build.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/Build.scala) to add commands to the play console.
-  * Add command definition files: [ApiDocSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/ApiDocSettings.scala), [CheckstyleSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/CheckstyleSettings.scala), and [PmdSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/PmdSettings.scala).
-  * Add (and maybe modify) configuration files: [checkstyle-config.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/checkstyle-config.xml), [pmd-ruleset.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/pmd-ruleset.xml), and [findbugs-excludefilter.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/findbugs-excludefilter.xml).
   
-Screencast
-==========
-
-Click the image below to watch a 14 minute walkthrough of this example:
-
-[<img src="https://raw.github.com/ics-software-engineering/play-example-quality-assurance/master/doc/play-example-quality-assurance-screenshot.png" width="400">](https://www.youtube.com/watch?v=uRknW9EjISw)  
-  
-
-Example invocations
-===================
+The code is designed to allow you to add only those tools that you need for your project. Installation and running
+of each tool is discussed separately below.
 
 PMD
----
+===
+
+Installation
+------------
+
+  * Update project/plugins.sbt with the PMD library dependency.
+  * Add project/pmd-ruleset.xml
+  * Add project/PmdSettings.scala
+  * Add qa.pmd.sbt 
+
+Invocation
+---------
 
 ```
 [~/projecthosting/github/play-example-quality-assurance]-> play pmd
 [info] Loading project definition from /Users/johnson/projecthosting/github/play-example-quality-assurance/project
 [info] Set current project to play-example-quality-assurance (in build file:/Users/johnson/projecthosting/github/play-example-quality-assurance/)
 [info] Running PMD...
-[info] 
-[success] Total time: 1 s, completed Jun 10, 2013 1:33:54 PM
+[info] <?xml version="1.0" encoding="UTF-8"?>
+[info] <pmd version="5.0.0" timestamp="2014-01-10T13:05:53.566">
+[info] </pmd>
+[success] Total time: 1 s, completed Jan 10, 2014 1:05:53 PM
 ```
 
-The output file is in target/pmd/pmd-report.txt and echoed to the console.  For Play's default application, no PMD warnings are generated, resulting in a blank info line output.
-
-Modify [pmd-ruleset.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/pmd-ruleset.xml) to change the way PMD analyzes your code. 
+The output file is in target/pmd/pmd-report.xml and echoed to the console.  For Play's default application, no PMD warnings are generated, resulting in a blank info line output.
 
 Checkstyle
+==========
+
+Installation
+------------
+
+  * Update project/plugins.sbt with the Checkstyle library dependency.
+  * Add project/checkstyle-config.xml
+  * Add project/CheckstyleSettings.scala
+  * Add qa.checkstyle.sbt 
+
+Invocation
 ----------
 
 ```
@@ -54,27 +58,39 @@ Checkstyle
 [info] Loading project definition from /Users/johnson/projecthosting/github/play-example-quality-assurance/project
 [info] Set current project to play-example-quality-assurance (in build file:/Users/johnson/projecthosting/github/play-example-quality-assurance/)
 [info] Running checkstyle...
-[info] Starting audit...
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:0: Missing package-info.java file.
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:3: Using the '.*' form of import should be avoided - play.*.
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:4: Using the '.*' form of import should be avoided - play.mvc.*.
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:6: Using the '.*' form of import should be avoided - views.html.*.
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:8: Missing a Javadoc comment.
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:9: Line has trailing spaces.
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:10:5: Missing a Javadoc comment.
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:13: Line has trailing spaces.
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/views/index.scala.html:4: Line has trailing spaces.
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/views/index.scala.html:6: Line has trailing spaces.
-[info] Audit done.
-[success] Total time: 1 s, completed Jun 10, 2013 1:39:55 PM
+[info] <?xml version="1.0" encoding="UTF-8"?>
+[info] <checkstyle version="5.5">
+[info] <file name="/Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java">
+[info] <error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+[info] <error line="3" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - play.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+[info] <error line="4" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - play.mvc.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+[info] <error line="6" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - views.html.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+[info] <error line="8" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+[info] <error line="10" column="5" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+[info] </file>
+[info] <file name="/Users/johnson/projecthosting/github/play-example-quality-assurance/app/views/index.scala.html">
+[info] </file>
+[info] <file name="/Users/johnson/projecthosting/github/play-example-quality-assurance/app/views/main.scala.html">
+[info] </file>
+[info] </checkstyle>
+[success] Total time: 1 s, completed Jan 10, 2014 1:08:06 PM
 ```
 
-The output file is in target/checkstyle/checkstyle-report.txt and also echoed to the console. For Play's default application, 10 Checkstyle warnings are generated.
+The output file is in target/checkstyle/checkstyle-report.xml and also echoed to the console. For Play's default application, 6 Checkstyle warnings are generated.
 
-Modify [checkstyle-config.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/checkstyle-config.xml) to change the way Checkstyle analyzes your code.
 
 FindBugs
---------
+========
+
+Installation
+------------
+
+  * Update project/plugins.sbt with the FindBugs sbt plugin.
+  * Add project/findbugs-exclude-filters.xml
+  * Add qa.findbugs.sbt 
+
+Invocation
+----------
 
 ```
 [~/projecthosting/github/play-example-quality-assurance]-> play findbugs
@@ -85,11 +101,23 @@ FindBugs
 
 The output file is in target/findbugs/findbugs.xml.  For Play's default application, no FindBug errors are generated, but the plugin will output the number of warnings found if non-zero.
 
-Modify [findbugs-excludefilter.xml](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/findbugs-excludefilter.xml) to change the way findbugs processes your code. 
-Additional FindBugs configuration options can be provided in [Build.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/Build.scala).
 
 Jacoco
-------
+======
+
+Installation
+------------
+
+  * Update project/plugins.sbt with the Jacoco sbt plugin.
+  * Add qa.jacoco.sbt
+  
+** Note: Due to ASM library incompatibilities, you cannot install both Jacoco and PMD.  If you do, then Jacoco
+will report the following error:**
+    
+    [error] (jacoco:fullClasspath) java.lang.IncompatibleClassChangeError: class org.jacoco.core.internal.flow.ClassProbesVisitor has interface org.objectweb.asm.ClassVisitor as super class
+
+Invocation
+----------
 
 ```
 [~/projecthosting/github/play-example-quality-assurance]-> play jacoco:cover
@@ -116,10 +144,18 @@ Jacoco
 
 The output report is available in target/jacoco/html/index.html.  For Play's default application, statement coverage is 57%.
 
-Jacoco configuration options can be provided in [Build.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/Build.scala).
 
 JavaDoc and ScalaDoc
---------------------
+====================
+
+Installation
+------------
+
+  * Add project/ApiDocSettings.scala
+  * Add qa.apidoc.sbt 
+
+Invocation
+----------
 
 ```
 [~/projecthosting/github/play-example-quality-assurance]-> play api-doc
@@ -169,8 +205,6 @@ This is a change from the "play new" command, which puts the sample tests in the
 "tests" package creates consistency with the existing Play convention of "controllers", "models", and "views"
 packages.  
 
-To modify the output, edit [ApiDocSettings.scala](https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/ApiDocSettings.scala).
-
 Credits
 =======
 
@@ -180,13 +214,10 @@ Credits
   * JavaDoc/ScalaDoc integration thanks to Yvonnick Esnault: https://github.com/yesnault/Play20StartApp/
   
 Play version
-------------
+============
 
-Last tested on Play 2.1.1
+Last tested on Play 2.2.0
 
-Build status
-------------
-  [![Build Status](https://philipmjohnson.ci.cloudbees.com/buildStatus/icon?job=play-example-quality-assurance)](https://philipmjohnson.ci.cloudbees.com/job/play-example-quality-assurance/) 
 
 
 

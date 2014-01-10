@@ -10,7 +10,7 @@ addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.2.0")
 // Add PMD and Checkstyle libraries.
 libraryDependencies ++= Seq(
   "com.puppycrawl.tools" % "checkstyle" % "5.5",
-  "net.sourceforge.pmd" % "pmd" % "5.0.5"
+  "net.sourceforge.pmd" % "pmd" % "5.0.0"
 )
 
 // Add Jacoco plugin for code coverage
