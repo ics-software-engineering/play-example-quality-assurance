@@ -1,9 +1,4 @@
-<<<<<<< HEAD:test/tests/IntegrationTest.java
-package tests;
-=======
 import org.junit.*;
->>>>>>> play-2.2:test/IntegrationTest.java
-
 import org.junit.Test;
 import play.test.TestBrowser;
 import play.libs.F.Callback;
