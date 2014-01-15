@@ -34,7 +34,7 @@
         <h1>
 <a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h1>
 
-<p>This project illustrates how to integrate the following quality assurance tools with <a href="http://www.playframework.com/">Play</a> applications:</p>
+<p>This system illustrates how to integrate the following quality assurance tools with <a href="http://www.playframework.com/">Play</a> applications:</p>
 
 <ul>
 <li>
@@ -47,71 +47,94 @@
 <a href="http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html">JavaDoc</a> and <a href="http://docs.scala-lang.org/style/scaladoc.html">ScalaDoc</a> documentation generation</li>
 <li>
 <a href="http://www.eclemma.org/jacoco/">Jacoco</a> test coverage analysis</li>
-</ul><h1>
-<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
-
-<p>Adding these tools to your Play project requires adding a <code>qa.sbt</code> file and changes to the <a href="project">project/</a> directory:</p>
-
-<ul>
-<li>Create <a href="qa.sbt">qa.sbt</a> to add commands to the play console; the contents of this file augment the contents of <code>build.sbt</code>.</li>
-<li>Update <a href="project/plugins.sbt">plugins.sbt</a> to add libraries.</li>
-<li>Add command definition files: <a href="project/ApiDocSettings.scala">ApiDocSettings.scala</a>, <a href="project/CheckstyleSettings.scala">CheckstyleSettings.scala</a>, and <a href="project/PmdSettings.scala">PmdSettings.scala</a>.</li>
-<li>Add (and maybe modify) configuration files: <a href="project/checkstyle-config.xml">checkstyle-config.xml</a>, <a href="project/pmd-ruleset.xml">pmd-ruleset.xml</a>, and <a href="project/findbugs-excludefilter.xml">findbugs-excludefilter.xml</a>.</li>
-</ul><h1>
-<a name="screencast" class="anchor" href="#screencast"><span class="octicon octicon-link"></span></a>Screencast</h1>
-
-<p>Click the image below to watch a 14 minute walkthrough of this example:</p>
-
-<p><a href="https://www.youtube.com/watch?v=uRknW9EjISw"><img src="https://raw.github.com/ics-software-engineering/play-example-quality-assurance/master/doc/play-example-quality-assurance-screenshot.png" width="400"></a>  </p>
+</ul><p>The code is designed to allow you to add only those tools that you need for your project. Installation and running
+of each tool is discussed separately below.</p>
 
 <h1>
-<a name="example-invocations" class="anchor" href="#example-invocations"><span class="octicon octicon-link"></span></a>Example invocations</h1>
+<a name="pmd" class="anchor" href="#pmd"><span class="octicon octicon-link"></span></a>PMD</h1>
 
 <h2>
-<a name="pmd" class="anchor" href="#pmd"><span class="octicon octicon-link"></span></a>PMD</h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<ul>
+<li>Update <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/plugins.sbt">project/plugins.sbt</a> with the PMD library dependency.</li>
+<li>Add <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/pmd-ruleset.xml">project/pmd-ruleset.xml</a>
+</li>
+<li>Add <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/PmdSettings.scala">project/PmdSettings.scala</a>
+</li>
+<li>Add <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/qa.pmd.sbt">qa.pmd.sbt</a>
+</li>
+</ul><p>Note that the current implementation of PMD conflicts with the current implementation of Jacoco. Only one or the other can be installed. 
+See the Jacoco documentation below for more details. </p>
+
+<h2>
+<a name="invocation" class="anchor" href="#invocation"><span class="octicon octicon-link"></span></a>Invocation</h2>
 
 <pre><code>[~/projecthosting/github/play-example-quality-assurance]-&gt; play pmd
 [info] Loading project definition from /Users/johnson/projecthosting/github/play-example-quality-assurance/project
 [info] Set current project to play-example-quality-assurance (in build file:/Users/johnson/projecthosting/github/play-example-quality-assurance/)
 [info] Running PMD...
-[info] 
-[success] Total time: 1 s, completed Jun 10, 2013 1:33:54 PM
+[info] &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+[info] &lt;pmd version="5.0.0" timestamp="2014-01-10T13:05:53.566"&gt;
+[info] &lt;/pmd&gt;
+[success] Total time: 1 s, completed Jan 10, 2014 1:05:53 PM
 </code></pre>
 
-<p>The output file is in <code>target/pmd/pmd-report.txt</code> and echoed to the console.<br>
-For Play's default application, no PMD warnings are generated, resulting in a blank info line output.</p>
+<p>The output file is in target/pmd/pmd-report.xml and echoed to the console.  For Play's default application, no PMD warnings are generated.</p>
 
-<p>Modify <a href="project/pmd-ruleset.xml">pmd-ruleset.xml</a> to change the way PMD analyzes your code. </p>
+<h1>
+<a name="checkstyle" class="anchor" href="#checkstyle"><span class="octicon octicon-link"></span></a>Checkstyle</h1>
 
 <h2>
-<a name="checkstyle" class="anchor" href="#checkstyle"><span class="octicon octicon-link"></span></a>Checkstyle</h2>
+<a name="installation-1" class="anchor" href="#installation-1"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<ul>
+<li>Update <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/plugins.sbt">project/plugins.sbt</a> with the Checkstyle library dependency.</li>
+<li>Add <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/checkstyle-config.xml">project/checkstyle-config.xml</a>
+</li>
+<li>Add <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/CheckstyleSettings.scala">project/CheckstyleSettings.scala</a>
+</li>
+<li>Add <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/qa.checkstyle.sbt">qa.checkstyle.sbt</a> </li>
+</ul><h2>
+<a name="invocation-1" class="anchor" href="#invocation-1"><span class="octicon octicon-link"></span></a>Invocation</h2>
 
 <pre><code>[~/projecthosting/github/play-example-quality-assurance]-&gt; play checkstyle
 [info] Loading project definition from /Users/johnson/projecthosting/github/play-example-quality-assurance/project
 [info] Set current project to play-example-quality-assurance (in build file:/Users/johnson/projecthosting/github/play-example-quality-assurance/)
 [info] Running checkstyle...
-[info] Starting audit...
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:0: Missing package-info.java file.
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:3: Using the '.*' form of import should be avoided - play.*.
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:4: Using the '.*' form of import should be avoided - play.mvc.*.
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:6: Using the '.*' form of import should be avoided - views.html.*.
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:8: Missing a Javadoc comment.
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:9: Line has trailing spaces.
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:10:5: Missing a Javadoc comment.
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java:13: Line has trailing spaces.
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/views/index.scala.html:4: Line has trailing spaces.
-[info] /Users/johnson/projecthosting/github/play-example-quality-assurance/app/views/index.scala.html:6: Line has trailing spaces.
-[info] Audit done.
-[success] Total time: 1 s, completed Jun 10, 2013 1:39:55 PM
+[info] &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+[info] &lt;checkstyle version="5.5"&gt;
+[info] &lt;file name="/Users/johnson/projecthosting/github/play-example-quality-assurance/app/controllers/Application.java"&gt;
+[info] &lt;error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/&gt;
+[info] &lt;error line="3" severity="error" message="Using the &amp;apos;.*&amp;apos; form of import should be avoided - play.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/&gt;
+[info] &lt;error line="4" severity="error" message="Using the &amp;apos;.*&amp;apos; form of import should be avoided - play.mvc.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/&gt;
+[info] &lt;error line="6" severity="error" message="Using the &amp;apos;.*&amp;apos; form of import should be avoided - views.html.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/&gt;
+[info] &lt;error line="8" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/&gt;
+[info] &lt;error line="10" column="5" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/&gt;
+[info] &lt;/file&gt;
+[info] &lt;file name="/Users/johnson/projecthosting/github/play-example-quality-assurance/app/views/index.scala.html"&gt;
+[info] &lt;/file&gt;
+[info] &lt;file name="/Users/johnson/projecthosting/github/play-example-quality-assurance/app/views/main.scala.html"&gt;
+[info] &lt;/file&gt;
+[info] &lt;/checkstyle&gt;
+[success] Total time: 1 s, completed Jan 10, 2014 1:08:06 PM
 </code></pre>
 
-<p>The output file is in <code>target/checkstyle/checkstyle-report.txt</code> and also echoed to the console. 
-For Play's default application, 10 Checkstyle warnings are generated.</p>
+<p>The output file is in target/checkstyle/checkstyle-report.xml and also echoed to the console. For Play's default application, 6 Checkstyle warnings are generated.</p>
 
-<p>Modify <a href="project/checkstyle-config.xml">checkstyle-config.xml</a> to change the way Checkstyle analyzes your code.</p>
+<h1>
+<a name="findbugs" class="anchor" href="#findbugs"><span class="octicon octicon-link"></span></a>FindBugs</h1>
 
 <h2>
-<a name="findbugs" class="anchor" href="#findbugs"><span class="octicon octicon-link"></span></a>FindBugs</h2>
+<a name="installation-2" class="anchor" href="#installation-2"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<ul>
+<li>Update <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/plugins.sbt">project/plugins.sbt</a> with the FindBugs sbt plugin.</li>
+<li>Add <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/findbugs-exclude-filters.xml">project/findbugs-exclude-filters.xml</a>
+</li>
+<li>Add <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/qa.findbugs.sbt">qa.findbugs.sbt</a> </li>
+</ul><h2>
+<a name="invocation-2" class="anchor" href="#invocation-2"><span class="octicon octicon-link"></span></a>Invocation</h2>
 
 <pre><code>[~/projecthosting/github/play-example-quality-assurance]-&gt; play findbugs
 [info] Loading project definition from /Users/johnson/projecthosting/github/play-example-quality-assurance/project
@@ -122,11 +145,24 @@ For Play's default application, 10 Checkstyle warnings are generated.</p>
 <p>The output file is in <code>target/findbugs/findbugs.xml</code>.<br>
 For Play's default application, no FindBug errors are generated, but the plugin will output the number of warnings found if non-zero.</p>
 
-<p>Modify <a href="project/findbugs-excludefilter.xml">findbugs-excludefilter.xml</a> to change the way findbugs processes your code. 
-Additional FindBugs configuration options can be provided in <a href="qa.sbt">qa.sbt</a>.</p>
+<h1>
+<a name="jacoco" class="anchor" href="#jacoco"><span class="octicon octicon-link"></span></a>Jacoco</h1>
 
 <h2>
-<a name="jacoco" class="anchor" href="#jacoco"><span class="octicon octicon-link"></span></a>Jacoco</h2>
+<a name="installation-3" class="anchor" href="#installation-3"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<ul>
+<li>Update <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/plugins.sbt">project/plugins.sbt</a> with the Jacoco sbt plugin.</li>
+<li>Add <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/qa.jacoco.sbt">qa.jacoco.sbt</a>
+</li>
+</ul><p>Note: Due to ASM library incompatibilities (?), you cannot install both Jacoco and PMD.  If you do, then Jacoco
+will report the following error:</p>
+
+<pre><code>[error] (jacoco:fullClasspath) java.lang.IncompatibleClassChangeError: class org.jacoco.core.internal.flow.ClassProbesVisitor has interface org.objectweb.asm.ClassVisitor as super class
+</code></pre>
+
+<h2>
+<a name="invocation-3" class="anchor" href="#invocation-3"><span class="octicon octicon-link"></span></a>Invocation</h2>
 
 <pre><code>[~/projecthosting/github/play-example-quality-assurance]-&gt; play jacoco:cover
 [info] Loading project definition from /Users/johnson/projecthosting/github/play-example-quality-assurance/project
@@ -153,10 +189,18 @@ Additional FindBugs configuration options can be provided in <a href="qa.sbt">qa
 <p>The output report is available in <code>target/jacoco/html/index.html</code>.<br>
 For Play's default application, statement coverage is 57%.</p>
 
-<p>Jacoco configuration options can be provided in <a href="qa.sbt">qa.sbt</a>.</p>
+<h1>
+<a name="javadoc-and-scaladoc" class="anchor" href="#javadoc-and-scaladoc"><span class="octicon octicon-link"></span></a>JavaDoc and ScalaDoc</h1>
 
 <h2>
-<a name="javadoc-and-scaladoc" class="anchor" href="#javadoc-and-scaladoc"><span class="octicon octicon-link"></span></a>JavaDoc and ScalaDoc</h2>
+<a name="installation-4" class="anchor" href="#installation-4"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<ul>
+<li>Add <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/project/ApiDocSettings.scala">project/ApiDocSettings.scala</a>
+</li>
+<li>Add <a href="https://github.com/ics-software-engineering/play-example-quality-assurance/blob/master/qa.apidoc.sbt">qa.apidoc.sbt</a> </li>
+</ul><h2>
+<a name="invocation-4" class="anchor" href="#invocation-4"><span class="octicon octicon-link"></span></a>Invocation</h2>
 
 <pre><code>[~/projecthosting/github/play-example-quality-assurance]-&gt; play api-doc
 [info] Loading project definition from /Users/johnson/projecthosting/github/play-example-quality-assurance/project
@@ -205,8 +249,6 @@ This is a change from the "play new" command, which puts the sample tests in the
 "tests" package creates consistency with the existing Play convention of "controllers", "models", and "views"
 packages.  </p>
 
-<p>To modify the output, edit <a href="project/ApiDocSettings.scala">ApiDocSettings.scala</a>.</p>
-
 <h1>
 <a name="credits" class="anchor" href="#credits"><span class="octicon octicon-link"></span></a>Credits</h1>
 
@@ -221,15 +263,12 @@ packages.  </p>
 </li>
 <li>JavaDoc/ScalaDoc integration thanks to Yvonnick Esnault: <a href="https://github.com/yesnault/Play20StartApp/">https://github.com/yesnault/Play20StartApp/</a>
 </li>
-</ul><h2>
-<a name="play-version" class="anchor" href="#play-version"><span class="octicon octicon-link"></span></a>Play version</h2>
+<li>Many tweaks thanks to Mike Slinn: <a href="https://github.com/mslinn">https://github.com/mslinn</a>
+</li>
+</ul><h1>
+<a name="play-version" class="anchor" href="#play-version"><span class="octicon octicon-link"></span></a>Play version</h1>
 
 <p>Last tested on Play 2.2.0</p>
-
-<h2>
-<a name="build-status" class="anchor" href="#build-status"><span class="octicon octicon-link"></span></a>Build status</h2>
-
-<p><a href="https://philipmjohnson.ci.cloudbees.com/job/play-example-quality-assurance/"><img src="https://philipmjohnson.ci.cloudbees.com/buildStatus/icon?job=play-example-quality-assurance" alt="Build Status"></a> </p>
       </section>
     </div>
 
